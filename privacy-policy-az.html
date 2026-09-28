@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Məxfilik siyasəti — Sürücü</title>
+  <style>
+    :root { color-scheme: light dark; font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+    body { margin: 0; background: #fff8f1; color: #202126; line-height: 1.65; }
+    main { max-width: 760px; margin: 0 auto; padding: 48px 24px 72px; }
+    header { padding: 28px; border-radius: 28px; background: linear-gradient(135deg, #ff8a2d 0%, #ffad62 100%); color: #211b17; }
+    h1 { margin: 0 0 8px; font-size: clamp(2rem, 6vw, 3.35rem); line-height: 1.06; }
+    h2 { margin-top: 36px; font-size: 1.3rem; }
+    .date { margin: 0; opacity: .78; font-weight: 650; }
+    .note { margin-top: 24px; padding: 18px 20px; border-left: 5px solid #7c68e8; border-radius: 14px; background: #f0ecff; color: #2d2851; }
+    li + li { margin-top: 7px; }
+    footer { margin-top: 44px; padding-top: 20px; border-top: 1px solid #ded6cf; color: #6b6662; font-size: .95rem; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #171719; color: #f5f1ed; }
+      header { color: #201914; }
+      .note { background: #292440; color: #eeeaff; }
+      footer { border-color: #3a3838; color: #b8b1ab; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Məxfilik siyasəti</h1>
+    <p class="date">Sürücü: Qaydalar və Testlər · Son yenilənmə: 28 sentyabr 2026</p>
+  </header>
+
+  <p class="note">Sürücü: Qaydalar və Testlər (az.surucu.app) yol hərəkəti mövzularını öyrənməyə və demo testlərlə məşq etməyə kömək edən müstəqil Android tətbiqidir. Tərtibatçı: javid.gstudio. Dövlət qurumunun rəsmi tətbiqi deyil. Bu siyasət hazırkı 1.0.0-rc1 test versiyasına aiddir.</p>
+
+  <h2>Toplanan məlumatlar</h2>
+  <p>Hazırkı 1.0.0-rc1 versiyası hesab yaratmır, reklam göstərmir, üçüncü tərəf analytics və crash SDK-sı istifadə etmir və şəxsi məlumatı avtomatik serverə göndərmir.</p>
+  <p>Tətbiq aşağıdakı məlumatları yalnız cihazda saxlayır:</p>
+  <ul>
+    <li>demo imtahan sessiyaları və cavablar;</li>
+    <li>səhvlər və təkrar cədvəli;</li>
+    <li>favorilər, yol nişanı səhv dəftəri və lokal statistika;</li>
+    <li>istifadəçinin cihazda yazdığı profil adı;</li>
+    <li>tema, bildiriş və səs seçimləri.</li>
+  </ul>
+  <p>Tətbiq gözlənilmədən bağlandıqda yalnız hadisənin vaxtı və xəta sinfinin texniki adı cihazda saxlanılır. Xəta mesajı, stack trace, profil adı, cavablar və öyrənmə tarixçəsi yazılmır. İstifadəçi məxfilik ekranında hesabatı əvvəlcə nəzərdən keçirib Android paylaşım pəncərəsi vasitəsilə könüllü göndərə bilər; avtomatik göndəriş yoxdur.</p>
+
+  <h2>Saxlanma və silinmə</h2>
+  <p>Məlumatlar Android Room, DataStore və daxili tətbiq yaddaşında saxlanılır. Android backup söndürülüb. İstifadəçi “Profil → Məxfilik və məlumatlar” bölməsindən imtahanları, səhvləri, təkrar cədvəlini, favoriləri, yol nişanı səhv dəftərini, öyrənmə aktivliyini və lokal xəta marker-ini silə bilər. Bu əməliyyat profil adını, tema, bildiriş və səs seçimlərini saxlayır. Tətbiqin silinməsi tətbiqə aid bütün lokal məlumatları cihazdan ləğv edir.</p>
+
+  <h2>Şəbəkə və üçüncü tərəflər</h2>
+  <p>Hazırkı build-də uzaq content ünvanı konfiqurasiya edilməyib və şəbəkə sorğusu göndərilmir. Production-da imzalı content yenilənməsi aktivləşdirilərsə, tətbiq yalnız əvvəlcədən icazə verilmiş HTTPS serverindən manifest və dərs paketini tələb edəcək; sorğuya profil adı, şəxsi identifikator və öyrənmə tarixçəsi əlavə edilməyəcək. Şəbəkə serveri standart texniki əlaqə məlumatını, məsələn IP ünvanını, öz təhlükəsizlik jurnallarında emal edə bilər. Tətbiq məlumatı reklam şəbəkələri, data brokerləri və analytics provayderləri ilə paylaşmır.</p>
+
+  <h2>İcazələr</h2>
+  <ul>
+    <li><code>INTERNET</code> — yalnız konfiqurasiya edildikdə imzalı hüquqi content yenilənməsini yoxlamaq üçün;</li>
+    <li><code>POST_NOTIFICATIONS</code> — istifadəçi bildirişləri aktivləşdirdikdə təkrar xatırlatmaları üçün. İmtina əsas dərs və test funksiyalarını məhdudlaşdırmır.</li>
+  </ul>
+
+  <h2>Təhlükəsizlik</h2>
+  <p>Uzaq content üçün HTTPS host allowlist-i, SHA-256 bütövlük yoxlaması, RSA imzası, schema yoxlaması və tam review coverage preflight-ı tətbiq edilir. Etibarlı public key olmadıqda paket aktivləşmir.</p>
+
+  <h2>Uşaqlar</h2>
+  <p>Tətbiqin hədəf auditoriyası 16–17 yaşlı və 18 yaşdan yuxarı istifadəçilərdir. Tətbiq 16 yaşdan kiçik uşaqlara yönəlməyib və onlardan şəxsi məlumat toplamaq üçün nəzərdə tutulmayıb.</p>
+
+  <h2>Dəyişikliklər və əlaqə</h2>
+  <p>Siyasət dəyişdikdə bu səhifədə yeni tarix göstəriləcək. Məxfilik və dəstək sorğuları üçün: <a href="mailto:javid.gstudio@gmail.com">javid.gstudio@gmail.com</a>. Bizə e-poçt göndərdikdə ünvanınız və məktubda könüllü paylaşdığınız məlumatlar sorğunuza cavab vermək üçün istifadə olunur. Həssas şəxsi məlumatları göndərməyin. Yazışmanın silinməsini həmin ünvandan tələb edə bilərsiniz.</p>
+
+  <footer>© 2026 Sürücü. Müstəqil tədris vasitəsi.</footer>
+</main>
+</body>
+</html>
