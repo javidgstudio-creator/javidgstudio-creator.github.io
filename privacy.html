@@ -10,7 +10,7 @@
   h2 { font-size: 20px; margin-top: 40px; border-bottom: 2px solid #6d46f5; padding-bottom: 6px; }
   h3 { font-size: 16px; margin-top: 24px; color: #4c28b5; }
   .updated { color: #64748b; font-size: 13px; margin-bottom: 24px; }
-  ul { padding-left: 20px; }
+  ul, ol { padding-left: 20px; }
   a { color: #6d46f5; }
   code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
 </style>
@@ -18,59 +18,81 @@
 <body>
 
 <h1>Focus4</h1>
-<p class="updated">Son yenilənmə / Last updated: 12 August 2026</p>
+<p class="updated">Son yenilənmə / Last updated: 6 November 2026</p>
 
 <h2>AZ — Gizlilik Siyasəti</h2>
-<p>Focus4 ("tətbiq") sizin şəxsi məhsuldarlıq alətinizdir. Bu səhifə hansı məlumatların toplandığını və necə istifadə olunduğunu izah edir.</p>
+<p>Focus4 ("tətbiq") sizin şəxsi məhsuldarlıq alətinizdir. Bu səhifə hansı məlumatların toplandığını, hansı hallarda cihazdan kənara çıxdığını və necə silinə biləcəyini izah edir. Bizim öz serverimiz yoxdur.</p>
 
 <h3>Hansı məlumatlar toplanır</h3>
 <ul>
   <li>Google hesabı ilə daxil olsanız: e-poçt ünvanınız və adınız (Google Sign-In vasitəsilə).</li>
-  <li>Yaratdığınız tapşırıqlar, layihələr, məqsədlər, komanda üzvləri və qeydlər.</li>
+  <li>Yaratdığınız tapşırıqlar, layihələr, məqsədlər, komanda üzvləri, vərdişlər və qeydlər.</li>
 </ul>
 
 <h3>Məlumatlar necə istifadə olunur</h3>
 <ul>
   <li>Bütün məlumatlar əsasən <strong>cihazınızda yerli olaraq</strong> saxlanılır.</li>
-  <li>Google hesabı ilə qoşulsanız, məlumatlarınızın şifrələnmiş surəti <strong>yalnız sizin öz Google Drive hesabınızın</strong> gizli tətbiq qovluğuna (<code>appDataFolder</code>) yedəklənir — bu fayl sizin normal Drive görünüşünüzdə görünmür və yalnız Focus4 tərəfindən oxuna bilər.</li>
-  <li>Heç bir məlumat bizim və ya üçüncü tərəf serverlərinə göndərilmir. Bizim öz serverimiz yoxdur.</li>
-  <li>Məlumatlarınız satılmır, reklam məqsədilə istifadə olunmur və üçüncü şəxslərlə paylaşılmır.</li>
-  <li>Bütün ötürmələr (Google Sign-In, Google Drive API) HTTPS/TLS ilə şifrələnir.</li>
+  <li>Google hesabı ilə qoşulsanız, məlumatlarınızın şifrələnmiş surəti <strong>yalnız sizin öz Google Drive hesabınızın</strong> gizli tətbiq qovluğuna (<code>appDataFolder</code>) yedəklənir — bu fayl normal Drive görünüşünüzdə görünmür və yalnız Focus4 tərəfindən oxuna bilər.</li>
+  <li>Məlumatlarınız satılmır, reklam məqsədilə istifadə olunmur və analitika/izləmə (tracking) üçün göndərilmir.</li>
+  <li>Bütün şəbəkə ötürmələri HTTPS/TLS ilə şifrələnir.</li>
+</ul>
+
+<h3>İstəyə bağlı funksiyalar (yalnız siz özünüz işə saldıqda)</h3>
+<ul>
+  <li><strong>Süni intellekt (AI) köməkçisi.</strong> Öz API açarınızı əlavə edib AI-ni seçsəniz (Anthropic Claude, OpenAI və ya Google Gemini), yalnız <strong>siz AI əməliyyatını başlatdığınız an</strong> həmin əməliyyatın mətni (məsələn, yazdığınız və ya səslə dediyiniz cümlə, "beyin boşaltma" ideyaları, paylaşdığınız mətn, tapşırığın başlığı) seçdiyiniz provayderə göndərilir. Açar <strong>yalnız cihazda, şifrələnmiş şəkildə</strong> saxlanılır, bizə göndərilmir və yedəyə düşmür. Provayderin öz şərtləri və məxfilik siyasəti tətbiq olunur. AI-ni qoşmasanız heç nə göndərilmir.</li>
+  <li><strong>Səs.</strong> Mikrofon düyməsinə basanda mətnə çevirmə Android-in sistem səs tanıma xidməti ilə aparılır (cihazınızın seçdiyi provayder, məsələn Google). Tətbiq səsi yazmır və saxlamır; yalnız nəticə mətni alır.</li>
+  <li><strong>Cihaz təqvimi.</strong> İcazə versəniz, təqvim hadisələri gün yükünü hesablamaq üçün oxunur. "Təqvimlə sinxron"u yandırsanız, tapşırıqlarınız cihazın təqvimində hadisə kimi yazılır; bu məlumatı cihazın təqvim hesabı (məsələn Google Təqvim) öz qaydaları ilə sinxronlaşdıra bilər.</li>
+  <li><strong>Outlook / Google Təqvim linki (ICS).</strong> Təqvimin dərc edilmiş linkini əlavə etsəniz, tətbiq həmin linkdən görüşləri <strong>yalnız oxumaq üçün</strong> birbaşa Microsoft/Google serverindən yükləyir. Link şifrələnmiş saxlanılır, bizə göndərilmir, yedəyə düşmür və "Bütün məlumatımı sil" ilə silinir. Tətbiq Outlook-da heç nəyi dəyişmir və poçt qutunuza girişi yoxdur.</li>
+  <li><strong>Paylaşma.</strong> Başqa tətbiqdən mətni Focus4-ə paylaşanda mətn yalnız sizin təsdiqinizdən sonra əlavə olunur. Tapşırığı komanda yoldaşına <code>.f4task</code> faylı kimi göndərəndə fayl sizin seçdiyiniz tətbiq vasitəsilə gedir.</li>
+  <li><strong>Bildirişlər</strong> yalnız cihazın daxilində planlaşdırılır.</li>
 </ul>
 
 <h3>Hesabınızı və məlumatlarınızı necə silə bilərsiniz</h3>
-<ul>
+<ol start="0">
+  <li><strong>Ən asan yol — tətbiq daxilində:</strong> Profil → "Hesab və qeydiyyat" → <strong>"Bütün məlumatımı sil"</strong>. Bu, telefondakı bütün məlumatı, ayarları, AI açarını, Outlook linkini, tətbiqin təqvimə yazdığı hadisələri və Google Drive-dakı BÜTÜN yedək fayllarını silir. (Drive yedəyi silinə bilməsə, heç nə silinmir və təkrar cəhd edə bilərsiniz.)</li>
   <li>Tətbiq daxilində: Profil → "Bulud sinxronizasiyası" → <strong>"Bağlantını kəs"</strong> — bu, Google hesabınızla əlaqəni dərhal kəsir.</li>
   <li>Google Drive-dakı yedəyi silmək üçün: <a href="https://myaccount.google.com/permissions" target="_blank">myaccount.google.com/permissions</a> səhifəsinə keçib Focus4-ə verilmiş icazəni ləğv edin — bu, appData qovluğundakı yedək faylını da silir.</li>
-  <li>Cihazınızdakı bütün yerli məlumatları silmək üçün: tətbiqi cihazınızdan sadəcə silin (uninstall) — bütün yerli data (tapşırıqlar, ayarlar) həmin anda cihazdan silinir.</li>
-</ul>
+  <li>Cihazınızdakı bütün yerli məlumatları silmək üçün: tətbiqi cihazınızdan silin (uninstall).</li>
+  <li>AI provayderə göndərilmiş mətnlərin silinməsi həmin provayderin öz qaydalarına tabedir (hesabınız üzərindən).</li>
+</ol>
 
 <p>Suallarınız üçün: <strong>hr.cvhazirlama@gmail.com</strong></p>
 
 <h2>EN — Privacy Policy</h2>
-<p>Focus4 ("the app") is your personal productivity tool. This page explains what data is collected and how it is used.</p>
+<p>Focus4 ("the app") is your personal productivity tool. This page explains what data is collected, when it leaves your device, and how to delete it. We do not operate our own backend server.</p>
 
 <h3>What data is collected</h3>
 <ul>
   <li>If you sign in with Google: your email address and name (via Google Sign-In).</li>
-  <li>Tasks, projects, goals, team members, and notes you create.</li>
+  <li>Tasks, projects, goals, team members, habits, and notes you create.</li>
 </ul>
 
 <h3>How data is used</h3>
 <ul>
   <li>All data is stored <strong>locally on your device</strong> by default.</li>
-  <li>If you connect your Google account, an encrypted copy of your data is backed up <strong>only to your own Google Drive account's</strong> private app folder (<code>appDataFolder</code>) — this file does not appear in your normal Drive view and can only be read by Focus4.</li>
-  <li>No data is sent to our servers or any third party — we do not operate our own backend server.</li>
-  <li>Your data is never sold, used for advertising, or shared with third parties.</li>
-  <li>All data in transit (Google Sign-In, Google Drive API) is encrypted via HTTPS/TLS.</li>
+  <li>If you connect your Google account, an encrypted copy of your data is backed up <strong>only to your own Google Drive account's</strong> private app folder (<code>appDataFolder</code>) — it does not appear in your normal Drive view and can only be read by Focus4.</li>
+  <li>Your data is never sold, used for advertising, or sent for analytics/tracking.</li>
+  <li>All network traffic is encrypted via HTTPS/TLS.</li>
+</ul>
+
+<h3>Optional features (only when you turn them on)</h3>
+<ul>
+  <li><strong>AI assistant.</strong> If you add your own API key and pick a provider (Anthropic Claude, OpenAI or Google Gemini), the text of an AI action — <strong>only at the moment you start it</strong> (for example a sentence you typed or dictated, brain-dump ideas, text you shared into the app, a task title) — is sent to the provider you chose. The key is stored <strong>only on your device, encrypted</strong>; it is never sent to us and excluded from backups. The provider's own terms and privacy policy apply. If you don't enable AI, nothing is sent.</li>
+  <li><strong>Voice.</strong> When you tap the microphone, speech-to-text is done by Android's system speech recognition service (the provider your device uses, e.g. Google). The app does not record or store audio; it only receives the resulting text.</li>
+  <li><strong>Device calendar.</strong> If you grant permission, calendar events are read to calculate your daily load. If you turn on "Sync with calendar", your tasks are written to your device calendar as events; your calendar account (e.g. Google Calendar) may sync them under its own rules.</li>
+  <li><strong>Outlook / Google Calendar link (ICS).</strong> If you add a published calendar link, the app downloads meetings <strong>read-only</strong> directly from Microsoft's/Google's servers. The link is stored encrypted, never sent to us, excluded from backups, and removed by "Delete all my data". The app changes nothing in Outlook and has no access to your mailbox.</li>
+  <li><strong>Sharing.</strong> When you share text into Focus4 from another app, it is added only after you confirm. When you send a task to a teammate as a <code>.f4task</code> file, it travels through the app you choose.</li>
+  <li><strong>Notifications</strong> are scheduled locally on your device.</li>
 </ul>
 
 <h3>How to delete your account and data</h3>
-<ul>
+<ol start="0">
+  <li><strong>Easiest way — in the app:</strong> Profile → "Account" → <strong>"Delete all my data"</strong>. This deletes everything on the phone, your settings, the AI key, the Outlook link, events the app wrote to your calendar, and ALL backup files in Google Drive. (If the Drive backups can't be deleted, nothing is removed and you can retry.)</li>
   <li>In-app: Profile → "Cloud sync" → <strong>"Disconnect"</strong> — immediately revokes the app's connection to your Google account.</li>
   <li>To delete the Drive backup: go to <a href="https://myaccount.google.com/permissions" target="_blank">myaccount.google.com/permissions</a> and revoke Focus4's access — this also deletes the backup file in your appData folder.</li>
-  <li>To delete all local data: simply uninstall the app from your device — all local data (tasks, settings) is removed immediately.</li>
-</ul>
+  <li>To delete all local data: uninstall the app from your device.</li>
+  <li>Text already sent to an AI provider is governed by that provider's own retention rules (via your account with them).</li>
+</ol>
 
 <p>For questions, contact: <strong>hr.cvhazirlama@gmail.com</strong></p>
 
